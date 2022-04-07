@@ -1,0 +1,6 @@
+public
+node_modules
+.husky
+.git
+*.html
+tailwind.config.js
