@@ -14,6 +14,7 @@ module.exports = {
     "linebreak-style": 0,
     "vuejs-accessibility/label-has-for": "off",
     "vue/script-setup-uses-vars": "error",
+    "@typescript-eslint/ban-ts-comment": "off",
   },
   overrides: [
     {

@@ -16,7 +16,10 @@ module.exports = {
     },
     extend: {
       colors: {
-        white: "#ffffff",
+        white: {
+          primary: "#ffffff",
+          light: '#f8fafc',
+        },
         cyan: {
           50: "#ecfeff",
           100: "#cffafe",
@@ -36,6 +39,8 @@ module.exports = {
           hover: "#0E1E30",
           normal: "#cfd9e3",
           bold: "#001631",
+          tertiary: '#e5eef6',
+          highlight: '#16a1eb',
         },
         gray: {
           light: "#e5eef6",
