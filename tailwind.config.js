@@ -17,7 +17,7 @@ module.exports = {
     extend: {
       colors: {
         white: {
-          primary: "#ffffff",
+          DEFAULT: '#ffffff',
           light: '#f8fafc',
         },
         cyan: {

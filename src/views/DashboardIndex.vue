@@ -14,7 +14,19 @@
       option-text="name"
       :options="multiSelectOptions"
     ></BaseMultiSelect>
+
+    <div class="my-10"></div>
+
+    <BaseButton color="primary" class="mr-5" @click="onClick">Save</BaseButton>
+    <BaseButton color="light" @click="onClick">Save & Continue</BaseButton>
   </div>
+
+  <div class="my-10"></div>
+  <DatePicker class="max-w-20"></DatePicker>
+  <div class="mb-96"></div>
+
+  <h1>Typography</h1>
+  <h1 class="bg-black-dark text-white">White</h1>
 </template>
 
 <script>
@@ -51,7 +63,11 @@ export default {
       },
     ]);
 
-    return { optionModel, multiSelectOptions };
+    function onClick() {
+      console.log("clicked");
+    }
+
+    return { optionModel, multiSelectOptions, onClick };
   },
 };
 </script>

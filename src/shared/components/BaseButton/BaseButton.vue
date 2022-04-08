@@ -1,6 +1,17 @@
+<template>
+  <button
+    :type="type"
+    :class="['border-2 px-8 py-2.5 rounded-md', classes]"
+    v-bind="$attrs"
+  >
+    <span class="flex justify-center items-center">
+      <slot />
+    </span>
+  </button>
+</template>
+
 <script>
 import { computed } from "vue";
-import settings from "../settings";
 
 export default {
   name: "BaseButton",
@@ -10,50 +21,29 @@ export default {
       type: String,
       required: false,
       default: "button",
-      validator: (propValue) => ["button", "submit"].includes(propValue),
     },
     color: {
       type: String,
       required: false,
       default: "primary",
-      validator: (propValue) =>
-        ["primary", "light", "gradient"].includes(propValue),
     },
     size: {
       type: String,
       required: false,
       default: "medium",
-      validator: (propValue) =>
-        ["small", "medium", "large"].includes(propValue),
     },
     fab: Boolean,
   },
-
   setup(props) {
-    const computedButtonClasses = computed(() => {
-      const data = [
-        settings.baseButton.theme.default.main,
-        [settings.baseButton.theme.default.variant[props.color]],
-        [settings.baseButton.theme.default.size[props.size]],
-        {
-          [settings.baseButton.theme.default.types.fab]: props.fab,
-          [settings.baseButton.theme.default.fabSize[props.size]]:
-            props.fab && props.size,
-        },
-      ];
+    const classes = computed(() => ({
+      "border-blue-highlight bg-blue-highlight text-white":
+        props.color === "primary",
 
-      return data;
-    });
+      "border-blue-highlight bg-white text-blue-highlight":
+        props.color === "light",
+    }));
 
-    return { computedButtonClasses };
+    return { classes };
   },
 };
 </script>
-
-<template>
-  <button :type="type" :class="computedButtonClasses" v-bind="$attrs">
-    <span class="flex justify-center items-center">
-      <slot />
-    </span>
-  </button>
-</template>

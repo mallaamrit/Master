@@ -49,7 +49,7 @@
         </div>
         <div
           v-if="open"
-          class="absolute bg-white-primary min-w-full z-50 border-2 border-green-primary rounded-br-md rounded-bl-md overflow-hidden"
+          class="absolute bg-white min-w-full z-50 border-2 border-green-primary rounded-br-md rounded-bl-md overflow-hidden"
           :class="{
             'border-t-0': open,
             '!border-red-500': error,
