@@ -2,16 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .base-button {
-    @apply inline-block border-2 px-6 py-2.5 rounded-md;
-  }
+/* Base button variants */
+.base-button-primary {
+  @apply bg-blue-500 text-white;
+}
 
-  .base-button_primary {
-    @apply border-blue-highlight bg-blue-highlight text-white;
-  }
+.base-button-light {
+  @apply bg-white text-blue-500;
+}
 
-  .base-button_light {
-    @apply border-blue-highlight bg-white text-blue-highlight;
-  }
+/* Base inputs */
+.base-input-normal {
+  @apply border-green-200;
+}
+
+.base-input-success {
+  @apply border-blue-500;
+}
+
+.base-input-error {
+  @apply border-red-500;
 }

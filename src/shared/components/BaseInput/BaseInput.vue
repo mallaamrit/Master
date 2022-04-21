@@ -1,18 +1,15 @@
 <template>
   <div>
     <label
-      :class="{ hidden: !label }"
-      class="block font-medium mb-1"
+      :class="{ hidden: !label && !$slots.label }"
+      class="block text-sm font-semibold mb-1"
       :for="uniqueNameIdentifier"
     >
       <slot name="label" v-bind="{ label }">{{ label }}</slot>
     </label>
     <div
-      class="flex items-center border-2 border-green-primary rounded-md overflow-hidden py-3 px-2"
-      :class="[
-        { '!border-blue-primary': success },
-        { '!border-red-500': error },
-      ]"
+      class="flex items-center bg-white border-2 rounded-md overflow-hidden py-3 px-2"
+      :class="computeClasses"
     >
       <slot name="icon">
         <BaseIcon v-if="icon" name="dollar-sign"></BaseIcon>
@@ -21,9 +18,11 @@
         :id="uniqueNameIdentifier"
         :type="type"
         :value="modelValue"
+        :disabled="disabled"
         autocomplete="off"
-        class="w-full focus:outline-none"
-        @input="$emit('update:modelValue', $event.target.value)"
+        class="w-full bg-white focus:outline-none leading-none"
+        @input="onInputEvent"
+        @keydown="onKeydown"
         v-bind="$attrs"
       />
     </div>
@@ -41,45 +40,60 @@ export default {
   props: {
     modelValue: {
       type: [String, Number],
-      required: false,
       default: "",
     },
     name: {
       type: String,
-      required: false,
       default: "",
     },
     label: {
       type: String,
-      required: false,
       default: "",
     },
     type: {
       type: String,
-      required: false,
       default: "text",
     },
     icon: {
       type: Boolean,
-      required: false,
+      default: false,
+    },
+    disabled: {
+      type: Boolean,
       default: false,
     },
     success: {
       type: Boolean,
-      required: false,
       default: false,
     },
     error: {
       type: Boolean,
-      required: false,
       default: false,
     },
   },
   emits: ["update:modelValue"],
-  setup(props) {
+  setup(props, context) {
     const uniqueNameIdentifier = computed(() => props.name.replace(/\s/g, ""));
 
-    return { uniqueNameIdentifier };
+    const computeClasses = computed(() => [
+      { "base-input-success": props.success },
+      { "base-input-error": props.error },
+      { "base-input-normal": !props.success && !props.error },
+      // { "pointer-events-none": props.disabled },
+    ]);
+
+    function onInputEvent($event) {
+      context.emit("update:modelValue", $event.target.value);
+    }
+
+    function onKeydown($event) {
+      if (props.disabled) {
+        $event.preventDefault();
+        $event.stopPropagation();
+      }
+    }
+
+    return { uniqueNameIdentifier, computeClasses, onInputEvent, onKeydown };
   },
 };
 </script>

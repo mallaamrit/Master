@@ -3,12 +3,19 @@
     <h1>Component/Docs</h1>
 
     <h2>Button</h2>
-    <BaseButton>Click Me!</BaseButton>
-    <BaseButton color="light" class="ml-4">Click Me!</BaseButton>
-    <BaseButton color="dark" class="ml-4">Click Me!</BaseButton>
+    <BaseButton class="mr-5" color="primary" @click="onClick">
+      Click Me!</BaseButton
+    >
+    <BaseButton color="light">Click Me!</BaseButton>
 
     <div class="my-10">
-      <BaseInput type="text" v-model="text" class="custom-input" />
+      <BaseInput
+        disabled
+        type="text"
+        v-model="text"
+        class="custom-input"
+        :success="false"
+      ></BaseInput>
       {{ text }}
     </div>
   </div>
@@ -23,9 +30,11 @@ export default {
   setup() {
     const text = ref("");
 
-    return { text };
+    function onClick() {
+      console.log(1);
+    }
+
+    return { text, onClick };
   },
 };
 </script>
-
-<style lang="scss" scoped></style>
