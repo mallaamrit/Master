@@ -1,73 +1,31 @@
 <template>
-  <div>Skynet App</div>
-
   <div class="p-10">
-    <BaseAccordian :active="true" title="Accordian title">
-      Content goes here
-    </BaseAccordian>
+    <h1>Component/Docs</h1>
 
-    <div class="my-10"></div>
+    <h2>Button</h2>
+    <BaseButton>Click Me!</BaseButton>
+    <BaseButton color="light" class="ml-4">Click Me!</BaseButton>
+    <BaseButton color="dark" class="ml-4">Click Me!</BaseButton>
 
-    <BaseMultiSelect
-      v-model="optionModel"
-      label="Evaluation Criteria"
-      option-text="name"
-      :options="multiSelectOptions"
-    ></BaseMultiSelect>
-
-    <div class="my-10"></div>
-
-    <BaseButton color="primary" class="mr-5" @click="onClick">Save</BaseButton>
-    <BaseButton color="light" @click="onClick">Save & Continue</BaseButton>
+    <div class="my-10">
+      <BaseInput type="text" v-model="text" class="custom-input" />
+      {{ text }}
+    </div>
   </div>
-
-  <div class="my-10"></div>
-  <DatePicker class="max-w-20"></DatePicker>
-  <div class="mb-96"></div>
-
-  <h1>Typography</h1>
-  <h1 class="bg-black-dark text-white">White</h1>
 </template>
 
 <script>
 import { ref } from "vue";
+import BaseButton from "@/shared/components/BaseButton/BaseButton.vue";
 
 export default {
+  components: { BaseButton },
   setup() {
-    const optionModel = ref([]);
+    const text = ref("");
 
-    setTimeout(() => {
-      optionModel.value = [
-        {
-          id: 1,
-          name: "Option 1",
-        },
-        {
-          id: 2,
-          name: "Option 2",
-        },
-      ];
-    }, 2000);
-    const multiSelectOptions = ref([
-      {
-        id: 1,
-        name: "Option 1",
-      },
-      {
-        id: 2,
-        name: "Option 2",
-      },
-      {
-        id: 3,
-        name: "Option 3",
-      },
-    ]);
-
-    function onClick() {
-      console.log("clicked");
-    }
-
-    return { optionModel, multiSelectOptions, onClick };
+    return { text };
   },
 };
 </script>
+
+<style lang="scss" scoped></style>
