@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .base-button {
+    @apply inline-block border-2 px-6 py-2.5 rounded-md;
+  }
+
+  .base-button_primary {
+    @apply border-blue-highlight bg-blue-highlight text-white;
+  }
+
+  .base-button_light {
+    @apply border-blue-highlight bg-white text-blue-highlight;
+  }
+}
