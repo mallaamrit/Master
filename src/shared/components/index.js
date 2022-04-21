@@ -4,7 +4,7 @@ import BaseSelect from "./BaseSelect/BaseSelect.vue";
 import BaseAccordian from "./BaseAccordian/BaseAccordian.vue";
 import BaseMultiSelect from "./BaseMultiSelect/BaseMultiSelect.vue";
 
-import "../assets/styles/index.scss";
+import "../assets/styles/index.css";
 
 const componentsPlugin = {
   install(app) {
