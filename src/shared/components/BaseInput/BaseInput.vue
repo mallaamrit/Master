@@ -108,7 +108,13 @@ export default {
       context.emit("update:modelValue", " ");
     }
 
-    return { uniqueNameIdentifier, computeClasses, onInputEvent, onKeydown, onClear };
+    return {
+      uniqueNameIdentifier,
+      computeClasses,
+      onInputEvent,
+      onKeydown,
+      onClear,
+    };
   },
 };
 </script>

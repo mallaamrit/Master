@@ -12,7 +12,9 @@
             @focus="test"
             @change="query = $event.target.value"
           />
-          <ComboboxButton class="absolute inset-y-0 right-0 flex items-center pr-2">
+          <ComboboxButton
+            class="absolute inset-y-0 right-0 flex items-center pr-2"
+          >
             <SelectorIcon class="w-5 h-5 text-gray-400" aria-hidden="true" />
           </ComboboxButton>
         </div>

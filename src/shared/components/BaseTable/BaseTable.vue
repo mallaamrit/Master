@@ -3,7 +3,9 @@
     <div class="flex flex-col">
       <div class="">
         <div class="py-2 align-middle inline-block min-w-full">
-          <div class="border-b sm:rounded-lg border border-blue-50 overflow-hidden">
+          <div
+            class="border-b sm:rounded-lg border border-blue-50 overflow-hidden"
+          >
             <table class="min-w-full divide-y divide-gray-200">
               <thead class="bg-blue-550">
                 <tr>
@@ -11,7 +13,11 @@
                     scope="col"
                     class="px-4 py-4 text-left text-xs font-bold text-blue-primary tracking-wider underline"
                   >
-                    <input type="checkbox" v-model="selectAllCheckbox" @input="onAllRowsSelected" />
+                    <input
+                      type="checkbox"
+                      v-model="selectAllCheckbox"
+                      @input="onAllRowsSelected"
+                    />
                   </th>
                   <th
                     v-if="pinned"
@@ -29,9 +35,15 @@
                         {{ column.text }}
                       </div>
                       <div class="my-auto">
-                        <button v-if="column.sort" @click="onColumnSort(column.value)">
+                        <button
+                          v-if="column.sort"
+                          @click="onColumnSort(column.value)"
+                        >
                           <svg
-                            v-if="sorting.field == '' || sorting.field != column.value"
+                            v-if="
+                              sorting.field == '' ||
+                              sorting.field != column.value
+                            "
                             xmlns="http://www.w3.org/2000/svg"
                             class="inline-block h-4 w-4 -mt-0.5"
                             fill="none"
@@ -76,7 +88,10 @@
 
               <tbody class="bg-white divide-y divide-gray-200">
                 <tr v-if="filteredData.length <= 0">
-                  <td colspan="7" class="whitespace-nowrap text-sm text-gray-500 text-center">
+                  <td
+                    colspan="7"
+                    class="whitespace-nowrap text-sm text-gray-500 text-center"
+                  >
                     <span class="font-bold">No data found</span>
                   </td>
                 </tr>
@@ -201,7 +216,9 @@ export default {
 
     function onItemChecked($event) {
       // eslint-disable-next-line
-      const itemIndex = selectedRows.value.findIndex((row) => row == $event.target.value);
+      const itemIndex = selectedRows.value.findIndex(
+        (row) => row === $event.target.value
+      );
       if (itemIndex !== -1) {
         selectedRows.value.splice(itemIndex, 1);
       } else {
@@ -229,7 +246,9 @@ export default {
     }
 
     function isRowChecked(key) {
-      const itemIndex = selectedRows.value.findIndex((row) => row === Number(key));
+      const itemIndex = selectedRows.value.findIndex(
+        (row) => row === Number(key)
+      );
       if (itemIndex !== -1) {
         return true;
       }
@@ -247,7 +266,10 @@ export default {
 
     function getTableRowData(item, column) {
       if (column.characterLimit && typeof column.characterLimit === "number") {
-        if (item[column.value] && item[column.value].length > column.characterLimit) {
+        if (
+          item[column.value] &&
+          item[column.value].length > column.characterLimit
+        ) {
           return `${item[column.value].substr(0, column.characterLimit)}...`;
         }
       }
