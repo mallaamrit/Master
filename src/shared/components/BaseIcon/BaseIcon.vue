@@ -1,5 +1,5 @@
 <template>
-  <span class="block" v-html="svgIcon" v-bind="$attrs"></span>
+  <span class="block cursor-pointer" v-html="svgIcon" v-bind="$attrs"></span>
 </template>
 
 <script>

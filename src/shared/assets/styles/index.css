@@ -13,11 +13,11 @@
 
 /* Base inputs */
 .base-input-normal {
-  @apply border-green-200;
+  @apply border-blue-50;
 }
 
 .base-input-success {
-  @apply border-blue-500;
+  @apply border-green-50;
 }
 
 .base-input-error {

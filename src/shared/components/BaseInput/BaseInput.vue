@@ -8,11 +8,13 @@
       <slot name="label" v-bind="{ label }">{{ label }}</slot>
     </label>
     <div
-      class="flex items-center bg-white border-2 rounded-md overflow-hidden py-3 px-2"
+      class="flex items-center bg-white border rounded-md overflow-hidden px-3 py-2"
       :class="computeClasses"
     >
       <slot name="icon">
-        <BaseIcon v-if="icon" name="dollar-sign"></BaseIcon>
+        <span class="mx-2">
+          <BaseIcon v-if="icon" :name="icon"></BaseIcon>
+        </span>
       </slot>
       <input
         :id="uniqueNameIdentifier"
@@ -20,11 +22,16 @@
         :value="modelValue"
         :disabled="disabled"
         autocomplete="off"
-        class="w-full bg-white focus:outline-none leading-none"
+        class="w-full text-sm bg-white focus:outline-none leading-6"
         @input="onInputEvent"
         @keydown="onKeydown"
         v-bind="$attrs"
       />
+      <slot name="clearable">
+        <span v-if="clearable" class="max-w-[100px]">
+          <BaseIcon name="x-circle" @click="onClear"></BaseIcon>
+        </span>
+      </slot>
     </div>
   </div>
 </template>
@@ -55,8 +62,8 @@ export default {
       default: "text",
     },
     icon: {
-      type: Boolean,
-      default: false,
+      type: String,
+      default: "",
     },
     disabled: {
       type: Boolean,
@@ -70,6 +77,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    clearable: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: ["update:modelValue"],
   setup(props, context) {
@@ -79,7 +90,7 @@ export default {
       { "base-input-success": props.success },
       { "base-input-error": props.error },
       { "base-input-normal": !props.success && !props.error },
-      // { "pointer-events-none": props.disabled },
+      { "pointer-events-none": props.disabled },
     ]);
 
     function onInputEvent($event) {
@@ -93,7 +104,11 @@ export default {
       }
     }
 
-    return { uniqueNameIdentifier, computeClasses, onInputEvent, onKeydown };
+    function onClear() {
+      context.emit("update:modelValue", " ");
+    }
+
+    return { uniqueNameIdentifier, computeClasses, onInputEvent, onKeydown, onClear };
   },
 };
 </script>
