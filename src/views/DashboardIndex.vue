@@ -32,6 +32,12 @@
           }}</span>
         </div>
       </div>
+
+      <div class="my-16">
+        <h2 class="font-medium text-lg mb-2">Base Select</h2>
+        <BaseTextEditor v-model="textEditor"></BaseTextEditor>
+        <div>Editor data: {{ textEditor }}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -55,12 +61,15 @@ export default {
       },
     ]);
     const selectedOption = ref("");
+    const textEditor = ref(
+      "<p><strong><em>some random datasssssss\nasdasdasd</em></strong>\n</p>"
+    );
 
     function onClick() {
       console.log("clicked....");
     }
 
-    return { text, selectOptions, selectedOption, onClick };
+    return { text, selectOptions, selectedOption, onClick, textEditor };
   },
 };
 </script>

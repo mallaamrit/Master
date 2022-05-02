@@ -6,7 +6,7 @@
     <slot name="label" v-bind="{ label }">{{ label }}</slot>
   </label>
   <div
-    class="border border-blue-normal rounded-md h-[147px]"
+    class="border border-blue-normal rounded-md h-[147px] bg-white"
     :class="[
       { '!border-green-primary': success },
       { '!border-red-500': error },
@@ -14,6 +14,7 @@
   >
     <QuillEditor
       v-model:content="editorText"
+      content-type="html"
       @update:content="onContentUpdate"
       @blur="$emit('blur')"
     ></QuillEditor>
@@ -49,7 +50,8 @@ export default {
     },
   },
   setup(props, context) {
-    const editorText = ref("");
+    const editorText = ref(props.modelValue);
+
     function onContentUpdate(data) {
       context.emit("update:modelValue", data);
     }
