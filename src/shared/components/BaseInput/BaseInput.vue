@@ -12,8 +12,8 @@
       :class="computeClasses"
     >
       <slot name="icon">
-        <span class="mx-2">
-          <BaseIcon v-if="icon" :name="icon"></BaseIcon>
+        <span class="mr-2" v-if="icon">
+          <BaseIcon :name="icon"></BaseIcon>
         </span>
       </slot>
       <input
@@ -28,8 +28,26 @@
         v-bind="$attrs"
       />
       <slot name="clearable">
-        <span v-if="clearable" class="max-w-[100px]">
-          <BaseIcon name="x-circle" @click="onClear"></BaseIcon>
+        <span
+          v-if="clearable"
+          class="max-w-[100px] cursor-pointer"
+          @click="onClear"
+          @keydown="onClear"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+              fill="#9EB3CC"
+            />
+            <path d="M7 7L13 13" stroke="white" />
+            <path d="M13 7L7 13" stroke="white" />
+          </svg>
         </span>
       </slot>
     </div>
@@ -82,7 +100,7 @@ export default {
       default: false,
     },
   },
-  emits: ["update:modelValue"],
+  emits: ["update:modelValue", "clear"],
   setup(props, context) {
     const uniqueNameIdentifier = computed(() => props.name.replace(/\s/g, ""));
 
@@ -106,6 +124,7 @@ export default {
 
     function onClear() {
       context.emit("update:modelValue", " ");
+      context.emit("clear");
     }
 
     return {
