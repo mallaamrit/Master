@@ -38,6 +38,23 @@
         <BaseTextEditor v-model="textEditor"></BaseTextEditor>
         <div>Editor data: {{ textEditor }}</div>
       </div>
+
+      <div class="my-16">
+        <h2 class="font-medium text-lg mb-2">Custom Dropdown</h2>
+        <BaseDropdown>
+          <template #selector>
+            <BaseButton>+ Add Vendor</BaseButton>
+          </template>
+          <div class="rounded-lg px-4 py-2 bg-red-400">
+            <ul>
+              <li>Option 1</li>
+              <li>Option 2</li>
+              <li>Option 3</li>
+              <li>Option 4</li>
+            </ul>
+          </div>
+        </BaseDropdown>
+      </div>
     </div>
   </div>
 </template>

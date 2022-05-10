@@ -13,6 +13,7 @@ import BaseSpinner from "./BaseSpinner/BaseSpinner.vue";
 import BaseTable from "./BaseTable/BaseTable.vue";
 import BaseIcon from "./BaseIcon/BaseIcon.vue";
 import BaseModal from "./BaseModal/BaseModal.vue";
+import BaseDropdown from "./BaseDropdown/BaseDropdown.vue";
 
 const componentsPlugin = {
   install(app) {
@@ -31,6 +32,7 @@ const componentsPlugin = {
     app.component("BaseTable", BaseTable);
     app.component("BaseIcon", BaseIcon);
     app.component("BaseModal", BaseModal);
+    app.component("BaseDropdown", BaseDropdown);
   },
 };
 
