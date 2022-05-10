@@ -11,7 +11,7 @@
                 <tr>
                   <th
                     scope="col"
-                    class="px-4 py-4 text-left text-xs font-bold text-blue-primary tracking-wider underline"
+                    class="px-4 py-3 text-left text-xs font-bold text-blue-primary tracking-wider underline"
                   >
                     <input
                       type="checkbox"
@@ -22,13 +22,13 @@
                   <th
                     v-if="pinned"
                     scope="col"
-                    class="px-4 py-4 text-left text-xs font-bold text-blue-primary tracking-wider underline"
+                    class="px-4 py-3 text-left text-xs font-bold text-blue-primary tracking-wider underline"
                   ></th>
                   <th
                     v-for="(column, index) in columns"
                     :key="index"
                     scope="col"
-                    class="px-4 py-4 text-left text-xs font-bold text-blue-primary"
+                    class="px-4 py-3 text-left text-xs font-bold text-blue-primary"
                   >
                     <div class="flex">
                       <div>
@@ -92,7 +92,7 @@
                     colspan="7"
                     class="whitespace-nowrap text-sm text-gray-500 text-center"
                   >
-                    <span class="font-bold">No data found</span>
+                    <span class="font-bold block py-3">No data found</span>
                   </td>
                 </tr>
                 <tr v-else v-for="(item, index) in filteredData" :key="index">
@@ -105,7 +105,7 @@
                       @input="onItemChecked"
                     />
                   </td>
-                  <td class="p-4">
+                  <td v-if="pinned" class="p-4">
                     <svg
                       class="cursor-pointer"
                       width="18"
@@ -125,7 +125,7 @@
                       />
                       <path
                         d="M3.49609 8.84874L9.33513 14.6907C10.5766 13.4486 10.865 11.6054 10.1842 10.0828L14.1329 6.13212C15.1261 6.39657 16.2234 6.14815 17.0004 5.37082L12.8113 1.17969C12.0424 1.949 11.7861 3.04687 12.0424 4.03254L8.08563 7.99128C6.56379 7.31814 4.72958 7.60663 3.49609 8.84874Z"
-                        :fill="item.pinned ? '#9EB3CC' : ''"
+                        :fill="item.isPinned ? '#9EB3CC' : ''"
                         stroke="#9EB3CC"
                         stroke-miterlimit="10"
                         stroke-linecap="round"
@@ -170,10 +170,8 @@
 </template>
 
 <script>
-import { computed, onMounted, reactive, ref } from "vue";
+import { computed, onMounted, reactive, ref, watch } from "vue";
 import _ from "lodash";
-
-// import useSort from "@/hooks/sort.js";
 
 export default {
   props: {
@@ -199,10 +197,13 @@ export default {
       default: null,
       required: false,
     },
+    checkedRows: {
+      type: Array,
+      default: () => [],
+    },
   },
   emits: ["onPinned", "onRowsSelected"],
   setup(props, context) {
-    // const filteredData = ref([]);
     const selectedRows = ref([]);
     const selectAllCheckbox = ref(false);
     const sorting = reactive({
@@ -215,40 +216,39 @@ export default {
     }
 
     function onItemChecked($event) {
-      // eslint-disable-next-line
       const itemIndex = selectedRows.value.findIndex(
-        (row) => row === $event.target.value
+        // eslint-disable-next-line
+        (row) => row == $event.target.value
       );
+      console.log(itemIndex);
       if (itemIndex !== -1) {
         selectedRows.value.splice(itemIndex, 1);
       } else {
         selectedRows.value.push(Number($event.target.value));
       }
 
-      // if (selectedRows.value.length === filteredData.value.length) {
-      //   selectAllCheckbox.value = true;
-      // } else {
-      //   selectAllCheckbox.value = false;
-      // }
+      if (selectedRows.value.length === props.items.length) {
+        selectAllCheckbox.value = true;
+      } else {
+        selectAllCheckbox.value = false;
+      }
+
       context.emit("onRowsSelected", selectedRows.value);
     }
 
-    // eslint-disable-next-line
     function onAllRowsSelected($event) {
-      // if ($event.target.checked) {
-      //   const itemIds = filteredData.value.map((data) => data[props.itemKey]);
-      //   selectedRows.value = itemIds;
-      // } else {
-      //   selectedRows.value = [];
-      // }
+      if ($event.target.checked) {
+        const itemIds = props.items.map((data) => data[props.itemKey]);
+        selectedRows.value = itemIds;
+      } else {
+        selectedRows.value = [];
+      }
 
       context.emit("onRowsSelected", selectedRows.value);
     }
 
     function isRowChecked(key) {
-      const itemIndex = selectedRows.value.findIndex(
-        (row) => row === Number(key)
-      );
+      const itemIndex = selectedRows.value.findIndex((row) => row === key);
       if (itemIndex !== -1) {
         return true;
       }
@@ -277,15 +277,51 @@ export default {
     }
 
     const filteredData = computed(() => {
-      const obj = [...props.items];
+      let objOne = [];
+      let obj = [];
+
+      // seperate pinned and non-pinned arrays
+      if (props.pinned) {
+        const pinnedRows = props.items.filter(
+          (item) => item.isPinned && item.isPinned === true
+        );
+        objOne = [...pinnedRows];
+        if (sorting.field !== "") {
+          if (sorting.order === "asc") {
+            objOne = _.sortBy(objOne, sorting.field);
+          }
+          if (sorting.order === "desc") {
+            objOne = _.sortBy(objOne, sorting.field).reverse();
+          }
+        }
+      }
+
+      const nonPinnedRow = props.items.filter(
+        (item) => !item.isPinned || !item.isPinned === true
+      );
+      obj = [...nonPinnedRow];
       if (sorting.field !== "") {
         if (sorting.order === "asc") {
-          return _.sortBy(obj, sorting.field);
+          obj = _.sortBy(obj, sorting.field);
+        } else {
+          obj = _.sortBy(obj, sorting.field).reverse();
         }
-        return _.sortBy(obj, sorting.field).reverse();
       }
-      return props.items;
+
+      return [...objOne, ...obj];
     });
+
+    watch(
+      () => props.checkedRows,
+      (newVal, preVal) => {
+        if (newVal !== preVal) {
+          selectedRows.value = newVal;
+          if (selectedRows.value.length <= 0) {
+            selectAllCheckbox.value = false;
+          }
+        }
+      }
+    );
 
     onMounted(() => {
       if (props.defaultSort !== null) {
