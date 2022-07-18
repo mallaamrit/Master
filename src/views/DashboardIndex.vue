@@ -1,5 +1,5 @@
 <template>
-  <div class="p-10 bg-[#FAFAFA] min-h-screen">
+  <div class="p-10 bg-[#FFFFFF] min-h-screen">
     <div class="bg-[#faf0f0] p-10 border-2 border-gray-100 rounded shadow-sm">
       <h1 class="font-semibold text-2xl">Component/Docs</h1>
 
@@ -62,9 +62,62 @@
 
       <div class="my-16">
         <h2 class="font-medium text-lg mb-2">Input</h2>
-        <BaseInput type="text" v-model="text" />
-        <div><b>Value:</b> {{ text }}</div>
+        <div class="mb-2">
+          <BaseInput
+            class="mb-2"
+            type="text"
+            v-model="text"
+            placeholder="Normal Input"
+          />
+        </div>
+        <div class="mb-2">
+          <BaseInput
+            class="mb-2"
+            type="text"
+            v-model="text"
+            :error="true"
+            placeholder="Error Input"
+          />
+        </div>
+        <div class="mb-2">
+          <BaseInput
+            class="mb-2"
+            type="text"
+            v-model="text"
+            :success="true"
+            placeholder="Success Input"
+          />
+        </div>
+        <div class="mb-2">
+          <BaseInput
+            class="mb-2"
+            type="text"
+            v-model="text"
+            disabled
+            placeholder="Disabled Input"
+          />
+        </div>
+        <div class="mb-2">
+          <BaseInput
+            class="mb-2"
+            type="text"
+            v-model="text"
+            placeholder="Input with slots"
+          >
+            <template #contentRight>icon</template>
+            <template #contentLeft>icon</template>
+          </BaseInput>
+        </div>
       </div>
+
+      <div>Color Pallete | BEOOH</div>
+      <div class="p-2 text-xs bg-blue-100">bg-blue-100</div>
+      <div class="p-2 text-xs bg-blue-200">bg-blue-200</div>
+      <div class="p-2 text-xs bg-blue-300">bg-blue-300</div>
+      <div class="p-2 text-xs bg-blue-400">bg-blue-400</div>
+      <div class="p-2 text-xs bg-blue-500">bg-blue-500</div>
+      <br />
+      <div class="p-2 text-xs bg-green-400">bg-green-400</div>
 
       <!-- <div class="my-16">
         <h2 class="font-medium text-lg mb-2">Base Select</h2>
