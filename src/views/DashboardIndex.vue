@@ -57,31 +57,13 @@
               />
             </div>
             <div class="mb-2">
-              <BaseInput
-                class="mb-2"
-                type="text"
-                v-model="text"
-                :error="true"
-                placeholder="Error Input"
-              />
+              <BaseInput class="mb-2" type="text" v-model="text" :error="true" placeholder="Error Input" />
             </div>
             <div class="mb-2">
-              <BaseInput
-                class="mb-2"
-                type="text"
-                v-model="text"
-                :success="true"
-                placeholder="Success Input"
-              />
+              <BaseInput class="mb-2" type="text" v-model="text" :success="true" placeholder="Success Input" />
             </div>
             <div class="mb-2">
-              <BaseInput
-                class="mb-2"
-                type="text"
-                v-model="text"
-                disabled
-                placeholder="Disabled Input"
-              />
+              <BaseInput class="mb-2" type="text" v-model="text" disabled placeholder="Disabled Input" />
             </div>
             <div class="mb-2">
               <BaseInput
@@ -131,12 +113,7 @@
       <div class="my-16">
         <h2 class="font-medium text-lg mb-2">Modal</h2>
         <BaseButton @click="modalOpen = true">Open Modal</BaseButton>
-        <BaseModal
-          :open="modalOpen"
-          title="Modal Title"
-          title-css="text-[20px]"
-          @close="modalOpen = false"
-        >
+        <BaseModal :open="modalOpen" title="Modal Title" title-css="text-[20px]" @close="modalOpen = false">
           <div class="mb-10">Modal content goes here!</div>
           <BaseButton @click="modalOpen = false">Close</BaseButton>
         </BaseModal>

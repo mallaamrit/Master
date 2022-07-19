@@ -7,16 +7,8 @@
     >
       <slot name="label" v-bind="{ label }">{{ label }}</slot>
     </label>
-    <div
-      class="flex items-center bg-white border rounded-md overflow-hidden px-3 py-2"
-      :class="computeClasses"
-    >
-      <span
-        v-if="$slots.prepend"
-        class="mr-2"
-        @click="prependClicked"
-        @keypress="() => {}"
-      >
+    <div class="flex items-center bg-white border rounded-md overflow-hidden px-3 py-2" :class="computeClasses">
+      <span v-if="$slots.prepend" class="mr-2" @click="prependClicked" @keypress="() => {}">
         <slot name="prepend"></slot>
       </span>
       <input
@@ -32,12 +24,7 @@
         @click="inputClicked"
         @blur="inputBlured"
       />
-      <span
-        v-if="$slots.append"
-        class="ml-2"
-        @click="appendClicked"
-        @keypress="() => {}"
-      >
+      <span v-if="$slots.append" class="ml-2" @click="appendClicked" @keypress="() => {}">
         <slot name="append"></slot>
       </span>
     </div>
@@ -84,13 +71,7 @@ export default {
       default: "",
     },
   },
-  emits: [
-    "update:modelValue",
-    "click",
-    "click:append",
-    "click:prepend",
-    "blur",
-  ],
+  emits: ["update:modelValue", "click", "click:append", "click:prepend", "blur"],
   setup(props, ctx) {
     const uniqueNameIdentifier = computed(() => props.name.replace(/\s/g, ""));
 

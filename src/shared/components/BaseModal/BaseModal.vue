@@ -17,16 +17,11 @@
           leave-from="opacity-100"
           leave-to="opacity-0"
         >
-          <DialogOverlay
-            class="fixed inset-0 bg-[#696D72] bg-opacity-75 transition-opacity"
-            :class="overlayCss"
-          />
+          <DialogOverlay class="fixed inset-0 bg-[#696D72] bg-opacity-75 transition-opacity" :class="overlayCss" />
         </TransitionChild>
 
         <!-- This element is to trick the browser into centering the modal contents. -->
-        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true"
-          >&#8203;</span
-        >
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
         <TransitionChild
           as="template"
           enter="ease-out duration-300"
@@ -42,11 +37,7 @@
           >
             <div>
               <div class="flex sm:mt-1">
-                <DialogTitle
-                  as="h3"
-                  class="flex-1 text-lg leading-6 font-medium text-blue-primary"
-                  :class="titleCss"
-                >
+                <DialogTitle as="h3" class="flex-1 text-lg leading-6 font-medium text-blue-primary" :class="titleCss">
                   <slot name="title">{{ title }}</slot>
                 </DialogTitle>
                 <XIcon
@@ -70,13 +61,7 @@
 <script>
 import { XIcon } from "@heroicons/vue/outline";
 
-import {
-  Dialog,
-  DialogOverlay,
-  DialogTitle,
-  TransitionChild,
-  TransitionRoot,
-} from "@headlessui/vue";
+import { Dialog, DialogOverlay, DialogTitle, TransitionChild, TransitionRoot } from "@headlessui/vue";
 
 export default {
   components: {

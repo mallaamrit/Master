@@ -9,10 +9,7 @@
           <slot name="title">
             <span class="text-2xl font-semibold leading-none">{{ title }}</span>
           </slot>
-          <ChevronUpIcon
-            :class="open ? 'transform rotate-180' : ''"
-            class="w-5 h-5 text-black-dark"
-          />
+          <ChevronUpIcon :class="open ? 'transform rotate-180' : ''" class="w-5 h-5 text-black-dark" />
         </DisclosureButton>
         <DisclosurePanel>
           <slot :close="close"></slot>

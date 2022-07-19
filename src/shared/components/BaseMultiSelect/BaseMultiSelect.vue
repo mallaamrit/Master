@@ -1,9 +1,6 @@
 <template>
   <div>
-    <label
-      :class="{ hidden: !label && !$slots.label }"
-      class="block font-semibold mb-1 text-sm"
-    >
+    <label :class="{ hidden: !label && !$slots.label }" class="block font-semibold mb-1 text-sm">
       <slot name="label" v-bind="{ label }">{{ label }}</slot>
     </label>
     <OnClickOutside @trigger="onClickOutside">
@@ -47,11 +44,7 @@
                 class="bg-blue-450 rounded-full w-5 h-5 leading-5 !p-0 ml-2 mr-1 text-center"
                 @click="removeSelected(data)"
               >
-                <BaseIcon
-                  class="text-white"
-                  style="margin-left: 3px"
-                  name="x"
-                />
+                <BaseIcon class="text-white" style="margin-left: 3px" name="x" />
               </button>
             </span>
             <span
@@ -64,10 +57,7 @@
             >
           </div>
           <div class="flex items-center">
-            <SelectorIcon
-              aria-hidden="true"
-              class="w-5 h-5 text-gray-400 mr-2"
-            />
+            <SelectorIcon aria-hidden="true" class="w-5 h-5 text-gray-400 mr-2" />
           </div>
         </div>
         <div
@@ -90,9 +80,7 @@
             >
               {{ option[optionText] }}
             </li>
-            <li v-if="filterOptions.length === 0" class="px-4 py-3 text-sm">
-              No data found
-            </li>
+            <li v-if="filterOptions.length === 0" class="px-4 py-3 text-sm">No data found</li>
           </ul>
         </div>
       </div>
@@ -168,9 +156,7 @@ export default {
       if (selectedData.value.length > 0) {
         const list = [];
         props.options.forEach((option) => {
-          const i = selectedData.value.findIndex(
-            (data) => data[props.uid] === option[props.uid]
-          );
+          const i = selectedData.value.findIndex((data) => data[props.uid] === option[props.uid]);
           if (i === -1) {
             list.push(option);
           }
@@ -200,9 +186,7 @@ export default {
 
     function setPreSelectedData(options, preSelectedData) {
       if (options.length > 0 && preSelectedData.length > 0) {
-        const commonData = options.filter((option) =>
-          preSelectedData.includes(option[props.uid])
-        );
+        const commonData = options.filter((option) => preSelectedData.includes(option[props.uid]));
         selectedData.value = commonData;
       }
     }
@@ -220,9 +204,7 @@ export default {
     }
 
     function removeSelected(data) {
-      const index = selectedData.value.findIndex(
-        (o) => o[props.uid] === data[props.uid]
-      );
+      const index = selectedData.value.findIndex((o) => o[props.uid] === data[props.uid]);
       if (index !== -1) {
         selectedData.value.splice(index, 1);
       }

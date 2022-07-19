@@ -1,9 +1,6 @@
 <template>
   <div>
-    <label
-      :class="{ hidden: !label && !$slots.label }"
-      class="block font-semibold mb-1 text-sm"
-    >
+    <label :class="{ hidden: !label && !$slots.label }" class="block font-semibold mb-1 text-sm">
       <slot name="label" v-bind="{ label }">{{ label }}</slot>
     </label>
 

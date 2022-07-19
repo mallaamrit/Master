@@ -11,15 +11,11 @@ describe("BaseDropdown.vue", () => {
 
     // verify open
     await wrapper.find('[data-cy="base-dropdown"]').trigger("click");
-    expect(wrapper.find('[data-cy="base-dropdown-content"]').text()).toContain(
-      "content"
-    );
+    expect(wrapper.find('[data-cy="base-dropdown-content"]').text()).toContain("content");
 
     // verify close
     await wrapper.find('[data-cy="base-dropdown"]').trigger("click");
     console.log(wrapper.find('[data-cy="base-dropdown-content"]'));
-    expect(
-      wrapper.find('[data-cy="base-dropdown-content"]').exists()
-    ).toBeFalsy();
+    expect(wrapper.find('[data-cy="base-dropdown-content"]').exists()).toBeFalsy();
   });
 });

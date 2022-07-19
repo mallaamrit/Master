@@ -1,10 +1,6 @@
 <template>
   <div class="relative">
-    <div
-      data-cy="base-dropdown"
-      @click="toggleDropdown"
-      @keydown="toggleDropdown"
-    >
+    <div data-cy="base-dropdown" @click="toggleDropdown" @keydown="toggleDropdown">
       <slot name="selector">
         <span>{{ label }}</span>
       </slot>

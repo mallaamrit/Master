@@ -1,13 +1,4 @@
-import {
-  ref,
-  isRef,
-  watch,
-  onMounted,
-  onBeforeUnmount,
-  unref,
-  h,
-  render,
-} from "vue";
+import { ref, isRef, watch, onMounted, onBeforeUnmount, unref, h, render } from "vue";
 import BaseSpinner from "../components/BaseSpinner/BaseSpinner.vue";
 
 /**

@@ -1,9 +1,6 @@
 <template>
   <div>
-    <label
-      :class="{ hidden: !label && !$slots.label }"
-      class="block font-semibold mb-1 text-sm"
-    >
+    <label :class="{ hidden: !label && !$slots.label }" class="block font-semibold mb-1 text-sm">
       <slot name="label" v-bind="{ label }">{{ label }}</slot>
     </label>
     <OnClickOutside @trigger="onClickOutside">
@@ -41,10 +38,7 @@
             class="min-w-0 focus:outline-none bg-transparent px-4 leading-6 text-sm"
           />
           <div class="flex items-center">
-            <SelectorIcon
-              class="w-5 h-5 text-gray-400 mr-2"
-              aria-hidden="true"
-            />
+            <SelectorIcon class="w-5 h-5 text-gray-400 mr-2" aria-hidden="true" />
           </div>
         </div>
         <div
@@ -65,13 +59,9 @@
               @click="onSelect(option)"
               @keydown="onSelect(option)"
             >
-              <slot name="option" v-bind="{ option }">{{
-                option[optionText]
-              }}</slot>
+              <slot name="option" v-bind="{ option }">{{ option[optionText] }}</slot>
             </li>
-            <li class="px-4 py-3 text-sm" v-if="filterOptions.length === 0">
-              No data found
-            </li>
+            <li class="px-4 py-3 text-sm" v-if="filterOptions.length === 0">No data found</li>
           </ul>
         </div>
       </div>
@@ -175,11 +165,7 @@ export default {
     filterOptions() {
       if (this.search && this.searchKeyword !== "") {
         return this.options.filter((option) => {
-          if (
-            option[this.optionText]
-              .toLowerCase()
-              .includes(this.searchKeyword.toLowerCase())
-          ) {
+          if (option[this.optionText].toLowerCase().includes(this.searchKeyword.toLowerCase())) {
             return true;
           }
           return false;
