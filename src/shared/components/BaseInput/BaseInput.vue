@@ -11,8 +11,13 @@
       class="flex items-center bg-white border rounded-md overflow-hidden px-3 py-2"
       :class="computeClasses"
     >
-      <span v-if="$slots.contentRight" class="mr-2">
-        <slot name="contentRight"></slot>
+      <span
+        v-if="$slots.prepend"
+        class="mr-2"
+        @click="prependClicked"
+        @keypress="() => {}"
+      >
+        <slot name="prepend"></slot>
       </span>
       <input
         :id="uniqueNameIdentifier"
@@ -24,9 +29,16 @@
         class="w-full text-sm bg-white focus:outline-none leading-6"
         @input="onInputEvent"
         @keypress="onKeydown"
+        @click="inputClicked"
+        @blur="inputBlured"
       />
-      <span v-if="$slots.contentLeft" class="ml-2">
-        <slot name="contentLeft"></slot>
+      <span
+        v-if="$slots.append"
+        class="ml-2"
+        @click="appendClicked"
+        @keypress="() => {}"
+      >
+        <slot name="append"></slot>
       </span>
     </div>
   </div>
@@ -55,10 +67,6 @@ export default {
       type: String,
       default: "text",
     },
-    icon: {
-      type: String,
-      default: "",
-    },
     disabled: {
       type: Boolean,
       default: false,
@@ -71,17 +79,19 @@ export default {
       type: Boolean,
       default: false,
     },
-    clearable: {
-      type: Boolean,
-      default: false,
-    },
     placeholder: {
       type: String,
       default: "",
     },
   },
-  emits: ["update:modelValue", "input-clear"],
-  setup(props, context) {
+  emits: [
+    "update:modelValue",
+    "click",
+    "click:append",
+    "click:prepend",
+    "blur",
+  ],
+  setup(props, ctx) {
     const uniqueNameIdentifier = computed(() => props.name.replace(/\s/g, ""));
 
     const computeClasses = computed(() => [
@@ -89,10 +99,11 @@ export default {
       { "input-error": props.error },
       { "input-normal": !props.success && !props.error },
       { "pointer-events-none select-none": props.disabled },
+      ctx.attrs.class,
     ]);
 
     function onInputEvent($event) {
-      context.emit("update:modelValue", $event.target.value);
+      ctx.emit("update:modelValue", $event.target.value);
     }
 
     function onKeydown($event) {
@@ -102,9 +113,20 @@ export default {
       }
     }
 
-    function onClear() {
-      context.emit("update:modelValue", "");
-      context.emit("input-clear");
+    function inputClicked() {
+      ctx.emit("click");
+    }
+
+    function inputBlured() {
+      ctx.emit("blur");
+    }
+
+    function appendClicked() {
+      ctx.emit("click:append");
+    }
+
+    function prependClicked() {
+      ctx.emit("click:prepend");
     }
 
     return {
@@ -112,7 +134,10 @@ export default {
       computeClasses,
       onInputEvent,
       onKeydown,
-      onClear,
+      inputBlured,
+      inputClicked,
+      appendClicked,
+      prependClicked,
     };
   },
 };

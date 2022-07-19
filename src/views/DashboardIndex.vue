@@ -6,38 +6,19 @@
       <div class="my-16">
         <h2 class="font-medium text-lg mb-2">Button</h2>
         <div class="flex">
-          <div class="w-1/2 flex flex-wrap">
-            <div class="m-2">
-              <BaseButton color="primary">Primary</BaseButton>
-            </div>
-            <div class="m-2">
-              <BaseButton color="secondary">Secondary</BaseButton>
-            </div>
-            <div class="m-2">
-              <BaseButton color="success">Success</BaseButton>
-            </div>
-            <div class="m-2">
-              <BaseButton color="info">Info</BaseButton>
-            </div>
-            <div class="m-2">
-              <BaseButton color="light">Light</BaseButton>
-            </div>
-            <div class="m-2">
-              <BaseButton disabled @click="click">Disabled</BaseButton>
-            </div>
-
-            <div class="m-2">
-              <BaseButton size="normal">NORMAL BUTTON</BaseButton>
-            </div>
-            <div class="m-2">
-              <BaseButton size="small">SMALL BUTTON</BaseButton>
-            </div>
-            <div class="m-2">
-              <BaseButton size="large">EXTRA LARGE BUTTON</BaseButton>
-            </div>
+          <div class="w-1/2 flex items-center flex-wrap pr-2 gap-5">
+            <BaseButton color="primary" @click="callEvent">Primary</BaseButton>
+            <BaseButton color="secondary" @click="callEvent">Secondary</BaseButton>
+            <BaseButton color="success" @click="callEvent">Success</BaseButton>
+            <BaseButton color="info" @click="callEvent">Info</BaseButton>
+            <BaseButton color="light" @click="callEvent">Light</BaseButton>
+            <BaseButton disabled @click="callEvent">Disabled</BaseButton>
+            <BaseButton size="normal" @click="callEvent">NORMAL BUTTON</BaseButton>
+            <BaseButton size="small" @click="callEvent">SMALL BUTTON</BaseButton>
+            <BaseButton size="large" @click="callEvent">EXTRA LARGE BUTTON</BaseButton>
           </div>
 
-          <div class="w-1/2">
+          <div class="w-1/2 pl-2">
             <label class="block font-semibold text-2xl">Props:</label>
             <div>
               <b class="mr-5">color: String</b>
@@ -62,118 +43,141 @@
 
       <div class="my-16">
         <h2 class="font-medium text-lg mb-2">Input</h2>
-        <div class="mb-2">
-          <BaseInput
-            class="mb-2"
-            type="text"
-            v-model="text"
-            placeholder="Normal Input"
-          />
-        </div>
-        <div class="mb-2">
-          <BaseInput
-            class="mb-2"
-            type="text"
-            v-model="text"
-            :error="true"
-            placeholder="Error Input"
-          />
-        </div>
-        <div class="mb-2">
-          <BaseInput
-            class="mb-2"
-            type="text"
-            v-model="text"
-            :success="true"
-            placeholder="Success Input"
-          />
-        </div>
-        <div class="mb-2">
-          <BaseInput
-            class="mb-2"
-            type="text"
-            v-model="text"
-            disabled
-            placeholder="Disabled Input"
-          />
-        </div>
-        <div class="mb-2">
-          <BaseInput
-            class="mb-2"
-            type="text"
-            v-model="text"
-            placeholder="Input with slots"
-          >
-            <template #contentRight>icon</template>
-            <template #contentLeft>icon</template>
-          </BaseInput>
-        </div>
-      </div>
-
-      <div>Color Pallete | BEOOH</div>
-      <div class="p-2 text-xs bg-blue-100">bg-blue-100</div>
-      <div class="p-2 text-xs bg-blue-200">bg-blue-200</div>
-      <div class="p-2 text-xs bg-blue-300">bg-blue-300</div>
-      <div class="p-2 text-xs bg-blue-400">bg-blue-400</div>
-      <div class="p-2 text-xs bg-blue-500">bg-blue-500</div>
-      <br />
-      <div class="p-2 text-xs bg-green-400">bg-green-400</div>
-
-      <!-- <div class="my-16">
-        <h2 class="font-medium text-lg mb-2">Base Select</h2>
-        <BaseSelect
-          v-model="selectedOption"
-          :options="selectOptions"
-          label="Country"
-          option-text="text"
-        ></BaseSelect>
-        <div>
-          Selected country:
-          <span v-if="selectedOption !== ''">{{
-            selectOptions.find((opt) => opt.id === selectedOption).text
-          }}</span>
-        </div>
-      </div>
-
-      <div class="my-16">
-        <h2 class="font-medium text-lg mb-2">Base Select</h2>
-        <BaseTextEditor v-model="textEditor"></BaseTextEditor>
-        <div>Editor data: {{ textEditor }}</div>
-      </div>
-
-      <div class="my-16">
-        <h2 class="font-medium text-lg mb-2">Custom Dropdown</h2>
-        <BaseDropdown>
-          <template #selector>
-            <BaseButton>+ Add Vendor</BaseButton>
-          </template>
-          <div class="rounded-lg px-4 py-2 bg-red-400">
-            <ul>
-              <li>Option 1</li>
-              <li>Option 2</li>
-              <li>Option 3</li>
-              <li>Option 4</li>
-            </ul>
+        <div class="flex">
+          <div class="w-1/2 pr-2">
+            <div class="mb-2">
+              <BaseInput
+                label="Username"
+                class="mb-2"
+                type="text"
+                v-model="text"
+                placeholder="Normal Input"
+                @blur="callEvent"
+                @click="callEvent"
+              />
+            </div>
+            <div class="mb-2">
+              <BaseInput
+                class="mb-2"
+                type="text"
+                v-model="text"
+                :error="true"
+                placeholder="Error Input"
+              />
+            </div>
+            <div class="mb-2">
+              <BaseInput
+                class="mb-2"
+                type="text"
+                v-model="text"
+                :success="true"
+                placeholder="Success Input"
+              />
+            </div>
+            <div class="mb-2">
+              <BaseInput
+                class="mb-2"
+                type="text"
+                v-model="text"
+                disabled
+                placeholder="Disabled Input"
+              />
+            </div>
+            <div class="mb-2">
+              <BaseInput
+                class="mb-2"
+                type="text"
+                v-model="text"
+                placeholder="Input with slots"
+                @click="callEvent"
+                @click:append="callEvent"
+                @click:prepend="callEvent"
+              >
+                <template #prepend>icon</template>
+                <template #append>icon</template>
+              </BaseInput>
+            </div>
           </div>
-        </BaseDropdown>
-      </div> -->
+          <div class="w-1/2 pl-2">
+            <label class="block font-semibold text-2xl">Props:</label>
+            <div><b class="mr-2">modelValue: v-model</b> reactive model</div>
+            <div><b class="mr-2">name: String</b> name of input</div>
+            <div><b class="mr-2">label: String</b> input label</div>
+            <div><b class="mr-2">type: String</b> input type | default: text</div>
+            <div><b class="mr-2">disabled: Boolean</b> input type | default: text</div>
+            <div><b class="mr-2">success: Boolean</b> input state | default: false</div>
+            <div><b class="mr-2">error: Boolean</b> input state | default: false</div>
+            <div><b class="mr-2">placeholder: String</b> input placeholder</div>
+            <br />
+            <div><b class="mr-2">Slots:</b> #prepend #append #label</div>
+            <br />
+            <label class="block font-semibold text-2xl">Events:</label>
+            <div>@update:modelValue | @click | @blur | @click:append | @click:prepend</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="my-16">
+        <h2 class="font-medium text-lg mb-2">Colors</h2>
+        <div class="p-2 text-xs bg-blue-100">bg-blue-100</div>
+        <div class="p-2 text-xs bg-blue-200">bg-blue-200</div>
+        <div class="p-2 text-xs bg-blue-300">bg-blue-300</div>
+        <div class="p-2 text-xs bg-blue-400">bg-blue-400</div>
+        <div class="p-2 text-xs bg-blue-500">bg-blue-500</div>
+        <br />
+        <div class="p-2 text-xs bg-green-400">bg-green-400</div>
+      </div>
+
+      <div class="my-16">
+        <h2 class="font-medium text-lg mb-2">Modal</h2>
+        <BaseButton @click="modalOpen = true">Open Modal</BaseButton>
+        <BaseModal
+          :open="modalOpen"
+          title="Modal Title"
+          title-css="text-[20px]"
+          @close="modalOpen = false"
+        >
+          <div class="mb-10">Modal content goes here!</div>
+          <BaseButton @click="modalOpen = false">Close</BaseButton>
+        </BaseModal>
+      </div>
+
+      <div class="my-16">
+        <h2 class="font-medium text-lg mb-2">Accordian</h2>
+        <BaseAccordian class="mb-10" title="Default Accordian" :active="true">
+          <div class="py-2 px-6 bg-white">Accordian content goes here</div>
+        </BaseAccordian>
+        <BaseAccordian accordian-css="!bg-blue-500 rounded-none" :active="true">
+          <template #title> My Custom title </template>
+          <template #default="{ close }">
+            <div class="py-2 px-6 bg-white">
+              Accordian content goes here
+              <BaseButton @click="close">Close</BaseButton>
+            </div>
+          </template>
+        </BaseAccordian>
+      </div>
+
+      <div class="my-16">
+        <h2 class="font-medium text-lg mb-2">Checkbox</h2>
+        <BaseCheckbox v-model="checkbox" :label="checkbox" />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import {
-  BUTTON_COLORS,
-  BUTTON_TYPES,
-  BUTTON_SIZES,
-} from "@/shared/components/BaseButton/types";
+import { BUTTON_COLORS, BUTTON_TYPES, BUTTON_SIZES } from "@/shared/components/BaseButton/types";
 import { ref } from "vue";
 
 const arrayToString = (array, seperator) => array.join(` ${seperator} `);
 
 const text = ref("");
 
-const click = () => {
-  console.log("click");
+const callEvent = () => {
+  console.log("triggered");
 };
+
+const modalOpen = ref(false);
+const checkbox = ref(false);
 </script>

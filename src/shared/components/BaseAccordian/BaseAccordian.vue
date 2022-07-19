@@ -1,9 +1,10 @@
 <template>
   <div class="w-full">
     <div class="w-full">
-      <Disclosure :default-open="active" v-slot="{ open }">
+      <Disclosure :default-open="active" v-slot="{ open, close }">
         <DisclosureButton
-          class="flex justify-between items-center w-full text-left rounded-md bg-white-100 px-6 h-[68px]"
+          class="flex justify-between items-center w-full text-left rounded-md bg-white px-6 h-[68px]"
+          :class="accordianCss"
         >
           <slot name="title">
             <span class="text-2xl font-semibold leading-none">{{ title }}</span>
@@ -14,7 +15,7 @@
           />
         </DisclosureButton>
         <DisclosurePanel>
-          <slot></slot>
+          <slot :close="close"></slot>
         </DisclosurePanel>
       </Disclosure>
     </div>
@@ -36,6 +37,10 @@ export default {
     active: {
       type: Boolean,
       default: false,
+    },
+    accordianCss: {
+      type: String,
+      default: "",
     },
   },
 };

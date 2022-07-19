@@ -7,25 +7,3 @@
 body {
   font-family: "Roboto", sans-serif;
 }
-
-/* Base button variants */
-.base-button-primary {
-  @apply bg-blue-500 text-white;
-}
-
-.base-button-light {
-  @apply bg-white text-blue-500;
-}
-
-/* Base inputs */
-.base-input-normal {
-  @apply border-blue-50;
-}
-
-.base-input-success {
-  @apply border-green-50;
-}
-
-.base-input-error {
-  @apply border-red-500;
-}

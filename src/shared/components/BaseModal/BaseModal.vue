@@ -7,9 +7,7 @@
       class="fixed z-10 inset-0 overflow-y-auto"
       @close="$emit('close')"
     >
-      <div
-        class="flex items-end justify-center min-h-screen text-center sm:block sm:p-0"
-      >
+      <div class="flex items-end justify-center min-h-screen text-center sm:block sm:p-0">
         <TransitionChild
           as="template"
           enter="ease-out duration-300"
@@ -26,9 +24,7 @@
         </TransitionChild>
 
         <!-- This element is to trick the browser into centering the modal contents. -->
-        <span
-          class="hidden sm:inline-block sm:align-middle sm:h-screen"
-          aria-hidden="true"
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true"
           >&#8203;</span
         >
         <TransitionChild
@@ -49,6 +45,7 @@
                 <DialogTitle
                   as="h3"
                   class="flex-1 text-lg leading-6 font-medium text-blue-primary"
+                  :class="titleCss"
                 >
                   <slot name="title">{{ title }}</slot>
                 </DialogTitle>
@@ -60,7 +57,7 @@
               </div>
               <slot></slot>
             </div>
-            <div class="mt-5 sm:mt-6">
+            <div class="mt-5 sm:mt-6" v-if="$slots.bottom">
               <slot name="bottom" />
             </div>
           </div>
@@ -71,7 +68,6 @@
 </template>
 
 <script>
-// import { ref } from "vue";
 import { XIcon } from "@heroicons/vue/outline";
 
 import {
@@ -107,6 +103,10 @@ export default {
       default: "",
     },
     overlayCss: {
+      type: String,
+      default: "",
+    },
+    titleCss: {
       type: String,
       default: "",
     },

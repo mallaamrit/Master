@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        white: '#FFFFFF',
         blue: {
           100: '#E5EEF6',
           200: '#DCF1FC',
@@ -13,7 +14,6 @@ module.exports = {
         green: {
           400: '#00B294',
         },
-        white: '#FFFFFF',
         error: '#EF4444',
       },
     }

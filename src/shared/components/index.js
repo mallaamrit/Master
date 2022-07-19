@@ -1,5 +1,6 @@
 import BaseButton from "./BaseButton/BaseButton.vue";
 import BaseInput from "./BaseInput/BaseInput.vue";
+import BaseCheckbox from "./BaseCheckbox/BaseCheckbox.vue";
 import BaseTextarea from "./BaseTextarea/BaseTextarea.vue";
 import BaseSelect from "./BaseSelect/BaseSelect.vue";
 import BaseAccordian from "./BaseAccordian/BaseAccordian.vue";
@@ -21,6 +22,7 @@ const componentsPlugin = {
     app.component("BaseInput", BaseInput);
     app.component("BaseTextarea", BaseTextarea);
     app.component("BaseSelect", BaseSelect);
+    app.component("BaseCheckbox", BaseCheckbox);
     app.component("BaseAccordian", BaseAccordian);
     app.component("BaseMultiSelect", BaseMultiSelect);
     app.component("BaseButtonSwitch", BaseButtonSwitch);
