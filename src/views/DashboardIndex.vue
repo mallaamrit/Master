@@ -1,5 +1,5 @@
 <template>
-  <div class="p-10 bg-[#FFFFFF] min-h-screen">
+  <div class="p-5 bg-[#FFFFFF] min-h-screen">
     <div class="bg-[#faf0f0] p-10 border-2 border-gray-100 rounded shadow-sm">
       <h1 class="font-semibold text-2xl">Component/Docs</h1>
 
@@ -138,6 +138,8 @@
       <div class="my-16">
         <h2 class="font-medium text-lg mb-2">Checkbox</h2>
         <BaseCheckbox v-model="checkbox" :label="checkbox" />
+        <br />
+        <BaseCheckbox v-model="checkbox" label="Error" :error="true" />
       </div>
     </div>
   </div>
