@@ -4,7 +4,7 @@
       <h1 class="font-semibold text-2xl">Component/Docs</h1>
 
       <div class="my-16">
-        <h2 class="font-medium text-lg mb-2">Button</h2>
+        <h2 class="font-medium text-2xl mb-2">Button</h2>
         <div class="flex">
           <div class="w-1/2 flex items-center flex-wrap pr-2 gap-5">
             <BaseButton color="primary" @click="callEvent">Primary</BaseButton>
@@ -42,7 +42,7 @@
       </div>
 
       <div class="my-16">
-        <h2 class="font-medium text-lg mb-2">Input</h2>
+        <h2 class="font-medium text-2xl mb-2">Input</h2>
         <div class="flex">
           <div class="w-1/2 pr-2">
             <div class="mb-2">
@@ -100,7 +100,7 @@
       </div>
 
       <div class="my-16">
-        <h2 class="font-medium text-lg mb-2">Colors</h2>
+        <h2 class="font-medium text-2xl mb-2">Colors</h2>
         <div class="p-2 text-xs bg-blue-100">bg-blue-100</div>
         <div class="p-2 text-xs bg-blue-200">bg-blue-200</div>
         <div class="p-2 text-xs bg-blue-300">bg-blue-300</div>
@@ -111,7 +111,7 @@
       </div>
 
       <div class="my-16">
-        <h2 class="font-medium text-lg mb-2">Modal</h2>
+        <h2 class="font-medium text-2xl mb-2">Modal</h2>
         <BaseButton @click="modalOpen = true">Open Modal</BaseButton>
         <BaseModal :open="modalOpen" title="Modal Title" title-css="text-[20px]" @close="modalOpen = false">
           <div class="mb-10">Modal content goes here!</div>
@@ -120,7 +120,7 @@
       </div>
 
       <div class="my-16">
-        <h2 class="font-medium text-lg mb-2">Accordian</h2>
+        <h2 class="font-medium text-2xl mb-2">Accordian</h2>
         <BaseAccordian class="mb-10" title="Default Accordian" :active="true">
           <div class="py-2 px-6 bg-white">Accordian content goes here</div>
         </BaseAccordian>
@@ -136,10 +136,29 @@
       </div>
 
       <div class="my-16">
-        <h2 class="font-medium text-lg mb-2">Checkbox</h2>
-        <BaseCheckbox v-model="checkbox" :label="checkbox" />
-        <br />
-        <BaseCheckbox v-model="checkbox" label="Error" :error="true" />
+        <h2 class="font-medium text-2xl mb-2">Checkbox</h2>
+        <div class="mb-4">
+          <h3 class="font-medium text-md mb-2">Model as Boolean</h3>
+          <BaseCheckbox v-model="checkbox" />
+          Checkbox value: {{ checkbox }}
+        </div>
+
+        <div class="mb-4">
+          <h3 class="font-medium text-md mb-2">Model as array</h3>
+          <BaseCheckbox v-model="selected" :value="1" label="1" />
+          <BaseCheckbox v-model="selected" value="Dean" label="Dean" />
+          Selected Checkbox values: {{ selected }}
+        </div>
+
+        <div class="mb-4">
+          <h3 class="font-medium text-md mb-2">Disabled State</h3>
+          <BaseCheckbox v-model="checkbox" disabled label="Disabled" />
+          <BaseCheckbox />
+        </div>
+      </div>
+
+      <div class="my-16">
+        <h2 class="font-medium text-2xl mb-2">Checkbox</h2>
       </div>
     </div>
   </div>
@@ -158,5 +177,6 @@ const callEvent = () => {
 };
 
 const modalOpen = ref(false);
-const checkbox = ref(false);
+const checkbox = ref(true);
+const selected = ref(["1"]);
 </script>
