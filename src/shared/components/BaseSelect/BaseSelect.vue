@@ -32,7 +32,7 @@
           <input
             v-else
             type="text"
-            disabled
+            :disabled="!open && !search"
             :placeholder="placeholder"
             :value="selectedOption[optionText]"
             class="min-w-0 focus:outline-none bg-transparent px-4 leading-6 text-sm"

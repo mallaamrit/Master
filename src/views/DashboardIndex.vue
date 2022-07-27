@@ -50,7 +50,6 @@
                 label="Username"
                 class="mb-2"
                 type="text"
-                v-model="text"
                 placeholder="Normal Input"
                 @blur="callEvent"
                 @click="callEvent"
@@ -125,7 +124,7 @@
           <div class="py-2 px-6 bg-white">Accordian content goes here</div>
         </BaseAccordian>
         <BaseAccordian accordian-css="!bg-blue-500 rounded-none" :active="true">
-          <template #title> My Custom title </template>
+          <template #title> Custom accorddian</template>
           <template #default="{ close }">
             <div class="py-2 px-6 bg-white">
               Accordian content goes here
@@ -159,14 +158,17 @@
 
       <div class="my-16">
         <h2 class="font-medium text-2xl mb-2">Checkbox</h2>
+        <BaseSelect :options="options" option-text="text" uid="id" v-model="selectValue" search />
+        <BaseSelect :options="options" option-text="text" uid="id" v-model="selectValue" search />
+        <BaseSelect :options="options" option-text="text" uid="id" v-model="selectValue" search />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { BUTTON_COLORS, BUTTON_TYPES, BUTTON_SIZES } from "@/shared/components/BaseButton/types";
 import { ref } from "vue";
+import { BUTTON_COLORS, BUTTON_TYPES, BUTTON_SIZES } from "@/shared/components/BaseButton/types";
 
 const arrayToString = (array, seperator) => array.join(` ${seperator} `);
 
@@ -179,4 +181,16 @@ const callEvent = () => {
 const modalOpen = ref(false);
 const checkbox = ref(true);
 const selected = ref(["1"]);
+
+const options = ref([
+  {
+    id: 1,
+    text: "Option 1 asdasdasd asdasdasd asdasdasd asdasdasd asdasdas",
+  },
+  {
+    id: 2,
+    text: "Option 2",
+  },
+]);
+const selectValue = ref(1);
 </script>

@@ -12,6 +12,7 @@
         <slot name="prepend"></slot>
       </span>
       <input
+        ref="test"
         :id="uniqueNameIdentifier"
         :type="type"
         :value="modelValue"
@@ -23,6 +24,7 @@
         @keypress="onKeydown"
         @click="inputClicked"
         @blur="inputBlured"
+        v-bind="$attrs"
       />
       <span v-if="$slots.append" class="ml-2" @click="appendClicked" @keypress="() => {}">
         <slot name="append"></slot>
