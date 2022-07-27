@@ -8,7 +8,6 @@ import BaseMultiSelect from "./BaseMultiSelect/BaseMultiSelect.vue";
 import BaseButtonSwitch from "./BaseButtonSwitch/BaseButtonSwitch.vue";
 import BaseDatePicker from "./BaseDatePicker/BaseDatePicker.vue";
 import BaseCurrency from "./BaseCurrency/BaseCurrency.vue";
-import BaseToolTip from "./BaseToolTip/BaseToolTip.vue";
 import BaseTextEditor from "./BaseTextEditor/BaseTextEditor.vue";
 import BaseSpinner from "./BaseSpinner/BaseSpinner.vue";
 import BaseTable from "./BaseTable/BaseTable.vue";
@@ -28,7 +27,6 @@ const componentsPlugin = {
     app.component("BaseButtonSwitch", BaseButtonSwitch);
     app.component("BaseDatePicker", BaseDatePicker);
     app.component("BaseCurrency", BaseCurrency);
-    app.component("BaseToolTip", BaseToolTip);
     app.component("BaseTextEditor", BaseTextEditor);
     app.component("BaseSpinner", BaseSpinner);
     app.component("BaseTable", BaseTable);
