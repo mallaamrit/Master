@@ -162,6 +162,11 @@
         <BaseSelect :options="options" option-text="text" uid="id" v-model="selectValue" search />
         <BaseSelect :options="options" option-text="text" uid="id" v-model="selectValue" search />
       </div>
+
+      <div class="my-16">
+        <Input value="static data" @blur="callEvent" />
+        {{ text }}
+      </div>
     </div>
   </div>
 </template>
@@ -169,13 +174,14 @@
 <script setup>
 import { ref } from "vue";
 import { BUTTON_COLORS, BUTTON_TYPES, BUTTON_SIZES } from "@/shared/components/BaseButton/types";
+import Input from "../_test/TestInput.vue";
 
 const arrayToString = (array, seperator) => array.join(` ${seperator} `);
 
 const text = ref("");
 
 const callEvent = () => {
-  console.log("triggered");
+  console.log("event triggered");
 };
 
 const modalOpen = ref(false);

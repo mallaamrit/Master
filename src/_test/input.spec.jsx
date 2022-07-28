@@ -18,7 +18,7 @@ describe("Input", () => {
     expect(input.value).toBe("b");
   });
 
-  it("renders text from props input-value", () => {
+  it("renders text from props value", () => {
     const wrapper = mount(<Input data-test-ref="input" value="a" />);
     const $input = wrapper.find('[data-test-ref="input"]');
     expect($input.element.value).toBe("a");
@@ -53,5 +53,28 @@ describe("Input", () => {
     expect(wrapper.find('[data-test-ref="input-field"]').attributes("type")).toBe("password");
   });
 
-  it("");
+  it("can be disabled", async () => {
+    const wrapper = mount(<Input data-test-ref="input-field" />);
+    expect(wrapper.find('[data-test-ref="input-field"]').element.disabled).toBe(false);
+    await wrapper.setProps({ disabled: true });
+    expect(wrapper.find('[data-test-ref="input-field"]').element.disabled).toBe(true);
+  });
+
+  describe("events", () => {
+    it("can emit input blur event", async () => {
+      const blur = jest.fn();
+      const wrapper = mount(<Input data-test-ref="input-field" onBlur={blur} />);
+      wrapper.find('[data-test-ref="input-field"]').trigger("blur");
+      expect(wrapper.emitted("blur")).toBeTruthy();
+      expect(wrapper.emitted("blur").length).toBe(1);
+      expect(blur).toHaveBeenCalled();
+    });
+
+    it("cannot emit blur event when disabled", async () => {
+      const blur = jest.fn();
+      const wrapper = mount(<Input disabled data-test-ref="input-field" onBlur={blur} />);
+      wrapper.find('[data-test-ref="input-field"]').trigger("blur");
+      expect(blur).toHaveBeenCalledTimes(0);
+    });
+  });
 });
