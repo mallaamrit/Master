@@ -1,4 +1,6 @@
 <script>
+import { ref, watch } from "vue";
+
 const INPUT_TYPES = [
   "text",
   "password",
@@ -65,7 +67,15 @@ export default {
       ctx.emit("blur", value);
     };
 
-    return { onInput, onBlur };
+    const a = ref("");
+    const b = ref("");
+    const test = () => {
+      b.value = `${a.value}-test`;
+    };
+
+    watch(a, test);
+
+    return { a, onInput, onBlur, test, b };
   },
 };
 </script>
@@ -76,5 +86,6 @@ export default {
       <slot name="label">{{ label }}</slot>
     </div>
     <input :type="type" :value="modelValue" :disabled="disabled" @input="onInput" @blur="onBlur" v-bind="$attrs" />
+    <div id="test">{{ b }}</div>
   </div>
 </template>

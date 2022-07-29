@@ -76,5 +76,12 @@ describe("Input", () => {
       wrapper.find('[data-test-ref="input-field"]').trigger("blur");
       expect(blur).toHaveBeenCalledTimes(0);
     });
+
+    it("watcher", async () => {
+      const wrapper = mount(<Input data-test-ref="input-field" />);
+      wrapper.vm.a = 1;
+      await wrapper.vm.$nextTick();
+      expect(wrapper.find("#test").text()).toContain("1-test");
+    });
   });
 });
