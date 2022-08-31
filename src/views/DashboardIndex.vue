@@ -173,15 +173,28 @@
 
 <script setup>
 import { ref } from "vue";
+import { notify } from "@kyvg/vue3-notification";
+import { useSpinnerLoader } from "@/shared/composables";
 import { BUTTON_COLORS, BUTTON_TYPES, BUTTON_SIZES } from "@/shared/components/BaseButton/types";
 import Input from "../_test/TestInput.vue";
+
+const { startLoader, stopLoader } = useSpinnerLoader();
 
 const arrayToString = (array, seperator) => array.join(` ${seperator} `);
 
 const text = ref("");
 
 const callEvent = () => {
+  notify({
+    type: "error",
+    title: "A",
+    text: "asdasd asdasd asdasdas",
+  });
   console.log("event triggered");
+  startLoader();
+  setTimeout(() => {
+    stopLoader();
+  }, 2000);
 };
 
 const modalOpen = ref(false);
