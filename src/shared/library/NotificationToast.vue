@@ -1,8 +1,10 @@
 <template>
-  <notifications :duration="10000">
+  <notifications :duration="5000">
     <template #body="{ item, close }">
+      <!-- This example requires Tailwind CSS v2.0+ -->
+      <!-- Global notification live region, render this permanently at the end of the document -->
       <transition name="fade">
-        <div aria-live="assertive" class="flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start !z-30">
+        <div aria-live="assertive" class="flex items-end px-4 py-2 pointer-events-none sm:p-2 sm:items-start z-40">
           <div class="w-full flex flex-col items-center space-y-4 sm:items-end z-0">
             <div
               class="max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5"
@@ -58,6 +60,15 @@
                       />
                     </svg>
                   </div>
+                  <!-- <div v-if="type === 'success'" class="ml-3 w-0 flex-1 pt-0.5">
+                    <p class="text-sm font-medium text-gray-900">
+                      {{ item.title }}
+                    </p>
+                    <p class="mt-1 text-sm text-gray-500">
+                      {{ item.text }}
+                    </p>
+                  </div> -->
+
                   <div class="ml-3 w-0 flex-1 pt-0.5">
                     <p class="text-sm font-medium text-gray-900">
                       {{ item.title }}
