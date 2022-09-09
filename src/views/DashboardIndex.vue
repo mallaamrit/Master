@@ -47,13 +47,15 @@
           <div class="w-1/2 pr-2">
             <div class="mb-2">
               <BaseInput
+                id="ex-username"
                 label="Username"
-                class="mb-2"
+                class="mb-2 border-none"
                 type="text"
                 placeholder="Normal Input"
                 @blur="callEvent"
                 @click="callEvent"
               />
+              <BaseInput />
             </div>
             <div class="mb-2">
               <BaseInput class="mb-2" type="text" v-model="text" :error="true" placeholder="Error Input" />
@@ -173,28 +175,28 @@
 
 <script setup>
 import { ref } from "vue";
-import { notify } from "@kyvg/vue3-notification";
-import { useSpinnerLoader } from "@/shared/composables";
+// import { notify } from "@kyvg/vue3-notification";
+// import { useSpinnerLoader } from "@/shared/composables";
 import { BUTTON_COLORS, BUTTON_TYPES, BUTTON_SIZES } from "@/shared/components/BaseButton/types";
 import Input from "../_test/TestInput.vue";
 
-const { startLoader, stopLoader } = useSpinnerLoader();
+// const { startLoader, stopLoader } = useSpinnerLoader();
 
 const arrayToString = (array, seperator) => array.join(` ${seperator} `);
 
 const text = ref("");
 
 const callEvent = () => {
-  notify({
-    type: "error",
-    title: "A",
-    text: "asdasd asdasd asdasdas",
-  });
+  // notify({
+  //   type: "error",
+  //   title: "A",
+  //   text: "asdasd asdasd asdasdas",
+  // });
   console.log("event triggered");
-  startLoader();
-  setTimeout(() => {
-    stopLoader();
-  }, 2000);
+  // startLoader();
+  // setTimeout(() => {
+  //   stopLoader();
+  // }, 2000);
 };
 
 const modalOpen = ref(false);
