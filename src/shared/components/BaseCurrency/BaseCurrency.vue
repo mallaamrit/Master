@@ -25,9 +25,11 @@
           {{ prefix }}
         </slot>
       </span> -->
-      <span v-if="!isFocused && convertedCurrency !== ''" class="block text-sm font-medium leading-none px-4 w-full">{{
-        convertedCurrency
-      }}</span>
+      <span
+        v-if="!isFocused && convertedCurrency !== ''"
+        class="block text-sm font-medium leading-none px-4 w-full"
+        >{{ convertedCurrency }}</span
+      >
       <span
         v-if="!isFocused && convertedCurrency === ''"
         class="block text-sm font-medium leading-none px-4 w-full text-[#b6a3af]"

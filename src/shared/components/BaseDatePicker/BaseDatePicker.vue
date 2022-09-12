@@ -9,7 +9,12 @@
     >
       <slot name="label" v-bind="{ label }">{{ label }}</slot>
     </label>
-    <date-picker v-model="baseDate" :input-debounce="500" :min-date="minDate" :popover="{ visibility: 'focus' }">
+    <date-picker
+      v-model="baseDate"
+      :input-debounce="500"
+      :min-date="minDate"
+      :popover="{ visibility: 'focus' }"
+    >
       <template #default="{ inputValue, inputEvents }">
         <div
           class="flex justify-between items-center border border-blue-normal rounded-md h-[42px] px-4 bg-white overflow-hidden"

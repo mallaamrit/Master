@@ -4,8 +4,13 @@
       <!-- This example requires Tailwind CSS v2.0+ -->
       <!-- Global notification live region, render this permanently at the end of the document -->
       <transition name="fade">
-        <div aria-live="assertive" class="flex items-end px-4 py-2 pointer-events-none sm:p-2 sm:items-start z-40">
-          <div class="w-full flex flex-col items-center space-y-4 sm:items-end z-0">
+        <div
+          aria-live="assertive"
+          class="flex items-end px-4 py-2 pointer-events-none sm:p-2 sm:items-start z-40"
+        >
+          <div
+            class="w-full flex flex-col items-center space-y-4 sm:items-end z-0"
+          >
             <div
               class="max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5"
             >
@@ -73,7 +78,10 @@
                     <p class="text-sm font-medium text-gray-900">
                       {{ item.title }}
                     </p>
-                    <p v-html="item.text" class="mt-1 text-sm text-gray-500 max-h-96 overflow-y-auto"></p>
+                    <p
+                      v-html="item.text"
+                      class="mt-1 text-sm text-gray-500 max-h-96 overflow-y-auto"
+                    ></p>
                   </div>
                   <div class="ml-4 flex-shrink-0 flex">
                     <button

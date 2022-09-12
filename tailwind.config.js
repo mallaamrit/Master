@@ -1,9 +1,12 @@
 module.exports = {
+  important: true,
   content: ["./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        white: '#FFFFFF',
+        white: {
+          DEFAULT: '#FFFFFF',
+        },
         blue: {
           100: '#E5EEF6',
           200: '#DCF1FC',

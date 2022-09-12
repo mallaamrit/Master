@@ -12,7 +12,9 @@
             @focus="test"
             @change="query = $event.target.value"
           />
-          <ComboboxButton class="absolute inset-y-0 right-0 flex items-center pr-2">
+          <ComboboxButton
+            class="absolute inset-y-0 right-0 flex items-center pr-2"
+          >
             <SelectorIcon class="w-5 h-5 text-gray-400" aria-hidden="true" />
           </ComboboxButton>
         </div>
@@ -132,7 +134,10 @@ export default {
       query.value === ""
         ? props.options
         : props.options.filter((person) =>
-            person.name.toLowerCase().replace(/\s+/g, "").includes(query.value.toLowerCase().replace(/\s+/g, ""))
+            person.name
+              .toLowerCase()
+              .replace(/\s+/g, "")
+              .includes(query.value.toLowerCase().replace(/\s+/g, ""))
           )
     );
 

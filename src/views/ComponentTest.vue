@@ -1,23 +1,17 @@
 <template>
-  <div class="p-20">
-    <BaseInput
-      label="Username"
-      class="my-custom-class"
-      type="text"
-      placeholder="Normal Input"
-      @blur="onClick"
-      @click="onClick"
-    />
-  </div>
+  <BaseButton type="link" :to="{ name: 'home' }">LINK!</BaseButton>
+  <BaseButton size="small" @click="onClick">BUTTON!</BaseButton>
 </template>
 
-<script>
-export default {
-  name: "ComponentTest",
-  methods: {
-    onClick() {
-      console.log(1);
-    },
-  },
-};
+<script setup>
+import { ref } from "vue";
+
+function onClick() {
+  console.log(1);
+}
+
+const disabled = ref(false);
+setTimeout(() => {
+  disabled.value = true;
+}, 3000);
 </script>

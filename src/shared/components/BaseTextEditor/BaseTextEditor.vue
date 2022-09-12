@@ -1,10 +1,16 @@
 <template>
-  <label :class="{ hidden: !label && !$slots.label }" class="block font-semibold mb-1 text-sm">
+  <label
+    :class="{ hidden: !label && !$slots.label }"
+    class="block font-semibold mb-1 text-sm"
+  >
     <slot name="label" v-bind="{ label }">{{ label }}</slot>
   </label>
   <div
     class="border border-blue-normal rounded-md h-[147px] bg-white"
-    :class="[{ '!border-green-primary': success }, { '!border-red-500': error }]"
+    :class="[
+      { '!border-green-primary': success },
+      { '!border-red-500': error },
+    ]"
   >
     <QuillEditor
       v-model:content="editorText"

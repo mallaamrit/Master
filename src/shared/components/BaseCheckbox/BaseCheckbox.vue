@@ -85,7 +85,9 @@ export default {
         if (checked && index < 0) {
           localChecked = localChecked.concat(value);
         } else if (!checked && index > -1) {
-          localChecked = localChecked.slice(0, index).concat(localChecked.slice(index + 1));
+          localChecked = localChecked
+            .slice(0, index)
+            .concat(localChecked.slice(index + 1));
         }
       } else {
         localChecked = !!checked;

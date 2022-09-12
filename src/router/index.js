@@ -6,7 +6,7 @@ import setPageTitle from "../shared/utils/page";
 const routes = [
   {
     path: "/",
-    name: "dashboard-index",
+    name: "home",
     component: DashboardIndex,
     meta: {
       title: "Dashboard",

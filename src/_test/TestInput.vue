@@ -85,7 +85,14 @@ export default {
     <div v-if="label !== '' || $slots.label" class="form_input_label">
       <slot name="label">{{ label }}</slot>
     </div>
-    <input :type="type" :value="modelValue" :disabled="disabled" @input="onInput" @blur="onBlur" v-bind="$attrs" />
+    <input
+      :type="type"
+      :value="modelValue"
+      :disabled="disabled"
+      @input="onInput"
+      @blur="onBlur"
+      v-bind="$attrs"
+    />
     <div id="test">{{ b }}</div>
   </div>
 </template>

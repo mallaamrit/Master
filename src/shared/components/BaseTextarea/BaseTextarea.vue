@@ -9,7 +9,10 @@
     </label>
     <div
       class="flex items-center border border-blue-normal rounded-md overflow-hidden py-3 px-2 bg-white"
-      :class="[{ '!border-green-primary': success }, { '!border-red-500': error }]"
+      :class="[
+        { '!border-green-primary': success },
+        { '!border-red-500': error },
+      ]"
     >
       <slot name="icon">
         <BaseIcon v-if="icon" name="dollar-sign"></BaseIcon>
