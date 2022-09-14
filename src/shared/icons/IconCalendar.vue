@@ -1,0 +1,36 @@
+<template>
+  <svg
+    width="100%"
+    viewBox="0 0 22 22"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      x="1"
+      y="3.02954"
+      width="20"
+      height="17.7911"
+      rx="3"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <line x1="1" y1="6.94714" x2="21" y2="6.94714" stroke="currentColor" />
+    <line
+      x1="4.94446"
+      y1="2.52905"
+      x2="4.94446"
+      y2="1.32035"
+      stroke="currentColor"
+      stroke-linecap="round"
+    />
+    <line
+      x1="17.1666"
+      y1="2.52905"
+      x2="17.1666"
+      y2="1.32035"
+      stroke="currentColor"
+      stroke-linecap="round"
+    />
+  </svg>
+</template>

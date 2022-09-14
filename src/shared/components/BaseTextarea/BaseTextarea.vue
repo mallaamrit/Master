@@ -14,9 +14,6 @@
         { '!border-red-500': error },
       ]"
     >
-      <slot name="icon">
-        <BaseIcon v-if="icon" name="dollar-sign"></BaseIcon>
-      </slot>
       <textarea
         :id="uniqueNameIdentifier"
         :type="type"
@@ -32,12 +29,10 @@
 
 <script>
 import { computed } from "vue";
-import BaseIcon from "../BaseIcon/BaseIcon.vue";
 
 export default {
   name: "BaseInput",
   inheritAttrs: false,
-  components: { BaseIcon },
   props: {
     modelValue: {
       type: [String, Number],

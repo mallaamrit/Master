@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <label
       :class="{ hidden: !label && !$slots.label }"
@@ -19,7 +19,6 @@
           @click.self="toggleDropdown"
           @keydown="handleKeyDown"
         >
-          <!-- Search input -->
           <input
             v-if="open && search"
             ref="searchInputRef"
@@ -29,7 +28,6 @@
             v-bind="$attrs"
             @input="searchOptions"
           />
-          <!-- Select -->
           <div
             v-else
             class="flex gap-2 items-center mx-5 flex-wrap"
@@ -102,13 +100,12 @@
 
 <script>
 import { ref, computed, watchEffect, nextTick } from "vue";
-import BaseIcon from "@/shared/components/BaseIcon/BaseIcon.vue";
 import { SelectorIcon } from "@heroicons/vue/solid";
 import { OnClickOutside } from "@vueuse/components";
 
 export default {
   name: "BaseMultiSelect",
-  components: { SelectorIcon, OnClickOutside, BaseIcon },
+  components: { SelectorIcon, OnClickOutside },
   inheritAttrs: false,
   props: {
     modelValue: {
@@ -253,4 +250,4 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss"></style> -->

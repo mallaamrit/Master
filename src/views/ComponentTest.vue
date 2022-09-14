@@ -1,17 +1,15 @@
 <template>
-  <BaseButton type="link" :to="{ name: 'home' }">LINK!</BaseButton>
-  <BaseButton size="small" @click="onClick">BUTTON!</BaseButton>
+  <IconBase data-download-campaign type="button" :disabled="disabled">
+    <IconTrash />
+  </IconBase>
 </template>
 
 <script setup>
 import { ref } from "vue";
 
-function onClick() {
-  console.log(1);
-}
-
 const disabled = ref(false);
 setTimeout(() => {
+  console.log("called");
   disabled.value = true;
 }, 3000);
 </script>

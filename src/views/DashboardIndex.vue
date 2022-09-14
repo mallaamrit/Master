@@ -224,11 +224,6 @@
           search
         />
       </div>
-
-      <div class="my-16">
-        <Input value="static data" @blur="callEvent" />
-        {{ text }}
-      </div>
     </div>
   </div>
 </template>
@@ -242,7 +237,6 @@ import {
   BUTTON_TYPES,
   BUTTON_SIZES,
 } from "@/shared/components/BaseButton/types";
-import Input from "../_test/TestInput.vue";
 
 // const { startLoader, stopLoader } = useSpinnerLoader();
 

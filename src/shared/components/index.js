@@ -11,7 +11,6 @@ import BaseCurrency from "./BaseCurrency/BaseCurrency.vue";
 import BaseTextEditor from "./BaseTextEditor/BaseTextEditor.vue";
 import BaseSpinner from "./BaseSpinner/BaseSpinner.vue";
 import BaseTable from "./BaseTable/BaseTable.vue";
-import BaseIcon from "./BaseIcon/BaseIcon.vue";
 import BaseModal from "./BaseModal/BaseModal.vue";
 import BaseDropdown from "./BaseDropdown/BaseDropdown.vue";
 
@@ -30,7 +29,6 @@ const componentsPlugin = {
     app.component("BaseTextEditor", BaseTextEditor);
     app.component("BaseSpinner", BaseSpinner);
     app.component("BaseTable", BaseTable);
-    app.component("BaseIcon", BaseIcon);
     app.component("BaseModal", BaseModal);
     app.component("BaseDropdown", BaseDropdown);
   },
