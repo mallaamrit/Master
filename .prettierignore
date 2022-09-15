@@ -4,3 +4,5 @@ node_modules
 .git
 *.html
 tailwind.config.js
+*.MD
+*.md
