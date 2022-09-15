@@ -35,6 +35,10 @@ export default {
       type: String,
       default: "normal",
     },
+    flat: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: ["click"],
   setup(props, ctx) {
@@ -50,7 +54,9 @@ export default {
 
         // Disabled
         "bg-[#F8FAFC] cursor-not-allowed select-none": props.disabled,
-        "bg-[#e5e5e5]": !props.disabled,
+        "bg-[#e5e5e5]": !props.disabled && !props.flat,
+
+        "bg-transparent": props.flat,
 
         // Border
         "rounded-full": props.rounded,

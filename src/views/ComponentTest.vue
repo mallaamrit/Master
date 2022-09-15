@@ -16,6 +16,10 @@
   <IconBase data-download-campaign type="button" rounded size="small">
     <IconTrash />
   </IconBase>
+  &nbsp;
+  <IconBase flat>
+    <IconTrash />
+  </IconBase>
 </template>
 
 <script setup>
