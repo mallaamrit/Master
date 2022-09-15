@@ -51,7 +51,7 @@ export function showElementOnViewport(selector, options) {
 }
 
 export function useSpinnerLoader() {
-  const loading = ref(false);
+  let index = 0;
 
   function createContainer() {
     const el = document.querySelector(".base-spinner-container");
@@ -65,19 +65,21 @@ export function useSpinnerLoader() {
 
   function startLoader() {
     const container = createContainer();
-    if (!loading.value) {
+
+    if (container.innerHTML === "") {
       const vNode = h(BaseSpinner);
       document.body.append(container);
       render(vNode, container);
     }
-    loading.value = true;
+    index += 1;
   }
 
   function stopLoader() {
+    index -= 1;
+
     const container = createContainer();
-    if (loading.value) {
+    if (index === 0) {
       render(null, container);
-      loading.value = false;
     }
   }
 
