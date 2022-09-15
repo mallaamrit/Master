@@ -1,5 +1,5 @@
 <template>
-  <div class="inline-flex rounded-md px-2 py-2 text-gray-600" :class="classes">
+  <div :class="classes" v-bind="$attrs" @click="onClick" @keypress="() => {}">
     <slot />
   </div>
 </template>
@@ -27,43 +27,49 @@ export default {
       type: Boolean,
       default: false,
     },
+    rounded: {
+      type: Boolean,
+      default: false,
+    },
+    size: {
+      type: String,
+      default: "normal",
+    },
   },
-  setup(props) {
-    // const classes = ref("");
+  emits: ["click"],
+  setup(props, ctx) {
+    const classes = computed(() => [
+      `inline-flex text-gray-600`,
+      {
+        // Button
+        "cursor-pointer hover:bg-[#F8FAFC]": props.type === "button",
 
-    // const configureCss = () => {
-    //   if (props.disabled) {
-    //     classes.value = "bg-red-600";
-    //   }
-    // };
+        // Size
+        "w-8 h-8 px-2 py-2": props.size === "normal",
+        "w-5 h-5 px-1 py-1": props.size === "small",
 
-    // watch(
-    //   () => props.disabled,
-    //   () => {
-    //     configureCss();
-    //   }
-    // );
+        // Disabled
+        "bg-[#F8FAFC] cursor-not-allowed select-none": props.disabled,
+        "bg-[#e5e5e5]": !props.disabled,
 
-    const classes = computed(() => {
+        // Border
+        "rounded-full": props.rounded,
+        "rounded-md": !props.rounded,
+      },
+    ]);
+
+    const onClick = ($event) => {
       if (props.disabled) {
-        return "bg-red-600";
+        $event.preventDefault();
+        $event.stopPropagation();
+        return;
       }
-      return "bg-[#e5e5e5]";
-    });
-
-    // const componentData = {
-    //   // style: `width: ${props.width}px; height: ${props.width}px;`,
-    //   // class: [
-    //   //   "inline-flex rounded-md bg-[#e5e5e5] px-2 py-2 text-gray-600",
-    //   //   {
-    //   //     "hover:bg-[#F8FAFC]": props.type === "button",
-    //   //   },
-    //   // ],
-    //   class: classes.value,
-    // };
+      ctx.emit("click", $event);
+    };
 
     return {
       classes,
+      onClick,
     };
   },
 };
