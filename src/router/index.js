@@ -1,25 +1,12 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import DashboardIndex from "../views/DashboardIndex.vue";
-import ComponentTest from "../views/ComponentTest.vue";
+import OMGConenctRoutes from '@/modules/omgConnect/route'
 import setPageTitle from "../shared/utils/page";
 
+
 const routes = [
-  {
-    path: "/",
-    name: "home",
-    component: DashboardIndex,
-    meta: {
-      title: "Dashboard",
-    },
-  },
-  {
-    path: "/test",
-    component: ComponentTest,
-    meta: {
-      title: "Dashboard",
-    },
-  },
-];
+  ...OMGConenctRoutes
+]
+
 
 const router = createRouter({
   history: createWebHashHistory(process.env.BASE_URL),
